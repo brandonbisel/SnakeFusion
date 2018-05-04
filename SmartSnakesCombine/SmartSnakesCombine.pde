@@ -13,14 +13,20 @@ boolean trainLegendSnakes = false; //true if training the legends i.e. if runnin
 boolean showingLegend = false;//true if testing just one legend
 boolean fusionGo =false;//true if testing the snake fusion 
 
-float globalMutationRate = 0.01;
+
+// Determines the chance for each individual element of the NeuralNet Matrices to mutate at child birth, by way of generating a random float between 0 and 1 and checking to see that it is less than the Mutation Rate. 
+// Therefore, a globalMutationRate 0f 1 will cause every child to posess only mutated genes, and a value of 0 will prevent mutation altogether -- all children will inherit their genome entirely from their parents without modification.
+float globalMutationRate = 0.01f;
+float mutationRateStep = 0.01f;
+
+int population = 2000;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------  
 //run on startup
 void setup() {
   frameRate(speed);
   size(800, 500);
-  world = new World(5, 2000);
+  world = new World(5, population);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------  
 void draw() {
@@ -111,10 +117,20 @@ void keyPressed() {
     showingLegend = true;
     break;
   case 'h'://halve the mutation rate
-    globalMutationRate /=2;
+    if(globalMutationRate >= mutationRateStep){
+      globalMutationRate -= mutationRateStep;
+    }
+    else {
+      globalMutationRate = 0;
+    }
     break;
   case 'd'://double the mutation rate
-    globalMutationRate *= 2;
+    if(globalMutationRate <= 1 - mutationRateStep){
+      globalMutationRate += mutationRateStep;
+    }
+    else {
+      globalMutationRate = 1;
+    }
     break;
   case 'l'://train the legends
     trainLegendSnakes =!trainLegendSnakes;
