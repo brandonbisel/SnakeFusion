@@ -1,17 +1,29 @@
 # SnakeFusion
-Using the genetic algorithm and neural networks I trained up 5 snakes who will then fuse to become the ultimate snake, this is how I did it
+This is a fork of [Code-Bullet/SnakeFusion][1] that I've created to start playing around with genetic algorithms.
 
-The program I used to write and run this code was processing https://processing.org/download/
+### Current controls:
 
-If you get it working some instructions
-press Space to just show the current best from  each population
-press d to double the mutation rate
-press h to halve it 
-after you run it some snakes will be saved press 0 to 4 to check them out
-to further train the snakes of legend (the saved snakes) press L
-to fuse snakes together to create a super snake press f
+|  Key  |            Action            |
+|:-----:|------------------------------|
+| Space | Toggle "Show all snakes"     |
+|   +   | Increase "Speed"             |
+|   -   | Decrease "Speed"             |
+|   d   | Increase "Mutation Rate"[^1] |
+|   h   | Decrease "Mutation Rate"[^2] |
+|   0   | Test Legend 0                |
+|   1   | Test Legend 1                |
+|   2   | Test Legend 2                |
+|   3   | Test Legend 3                |
+|   4   | Test Legend 4                |
+|   f   | Fuse Legends                 |
+|   l   | Train Legends                |
+
+### Notes
+* The **Mutation Rate** is compared against a random float that is `>= 0` and `< 1`, for each "trait" in the child's weight matrices. If `rand < mutationRate` then that "trait" is mutated from the one the child originally received from its parents.
+* The `population` variable in `SmartSnakesCombine` controls the number of snakes created in each generation.
 
 
-I hope my commenting makes sense 
+[1]: https://github.com/Code-Bullet/SnakeFusion "Original Source"
 
-Have fun :)
+[^1]: _Modified from original to increment by 0.01, with a max of 1_
+[^2]: _Modified from original to decrement by 0.01, with a min of 0_
