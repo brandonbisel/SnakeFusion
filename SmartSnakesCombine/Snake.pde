@@ -146,7 +146,7 @@ class Snake {
     }
    
     //increase time left to live
-    leftToLive += 100;
+    leftToLive += 50;
 
     //if testing then grow by 4 but if not and the snake is still small only grow by 1
     //this is for helping snakes evolving so they dont get too big too soon

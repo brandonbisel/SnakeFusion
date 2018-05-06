@@ -19,7 +19,7 @@ boolean fusionGo =false;//true if testing the snake fusion
 float globalMutationRate = 0.01f;
 float mutationRateStep = 0.01f;
 
-int population = 2000;
+int population = 4000;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------  
 //run on startup
@@ -156,7 +156,7 @@ void drawData() {
     text("Generation: " + (worldOfLegends.gen), 10, 100); 
     text("Speed: " + speed, 10, 150);
     text("Global Best: " + (worldOfLegends.worldBestScore), 10, 200);
-    text("mutation Rate: " + globalMutationRate, 10, 250);      
+    text("mutation Rate: " + String.format("%.2f",globalMutationRate), 10, 250);      
 
     //testing a single legend
   } else if (showingLegend) {
@@ -172,6 +172,6 @@ void drawData() {
     text("Generation: " + (world.gen), 10, 100); 
     text("Speed: " + speed, 10, 150);
     text("Global Best: " + (world.worldBestScore), 10, 200);
-    text("mutation Rate: " + globalMutationRate, 10, 250);
+    text("mutation Rate: " + String.format("%.2f",globalMutationRate), 10, 250);
   }
 }

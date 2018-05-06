@@ -250,7 +250,7 @@ class SuperSnake {
 
 
     //let the snake live longer
-    leftToLive += 100;
+    leftToLive += 150;
     growCount +=4;//the snake grows by 4
     movesToFollow =0;//make sure the bestDecision() function is called before the next move
     foodFound = false;
